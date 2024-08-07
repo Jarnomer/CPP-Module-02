@@ -6,6 +6,7 @@
 
 using std::cout;
 using std::endl;
+using std::ostream;
 using std::roundf;
 
 class Fixed {
@@ -25,5 +26,7 @@ private:
   int _value;
   static const int _fBits = 8;
 };
+
+ostream &operator<<(ostream &out, const Fixed &f);
 
 #endif

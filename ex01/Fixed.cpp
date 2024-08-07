@@ -1,38 +1,36 @@
 #include "Fixed.hpp"
 #include "Colors.hpp"
 
+#define LOG(s1, s2)                             \
+  cout << BOLDCYAN << s1 << BOLDMAGENTA << s2   \
+       << GREEN << " called" << endl << RESET;
+
 Fixed::Fixed(void) {
-  cout << BOLDCYAN << "Default" << BOLDMAGENTA << " constructor" << RESET;
-  cout << GREEN << " called" << endl << RESET;
+  LOG("Default", " constructor")
   _value = 0;
 }
 
 Fixed::Fixed(const int value) {
-  cout << BOLDCYAN << "Int" << BOLDMAGENTA << " constructor" << RESET;
-  cout << GREEN << " called" << endl << RESET;
+  LOG("Int", " constructor")
   _value = value << _fBits;
 }
 
 Fixed::Fixed(const float value) {
-  cout << BOLDCYAN << "Float" << BOLDMAGENTA << " constructor" << RESET;
-  cout << GREEN << " called" << endl << RESET;
+  LOG("Float", " constructor")
   _value = roundf(value * (1 << _fBits));
 }
 
 Fixed::~Fixed(void) {
-  cout << BOLDRED << "De" << BOLDMAGENTA << "constructor" << RESET;
-  cout << GREEN << " called" << endl << RESET;
+  LOG("Deconstructor", " constructor")
 }
 
 Fixed::Fixed(const Fixed &f) {
-  cout << BOLDCYAN << "Copy" << BOLDMAGENTA << " constructor" << RESET;
-  cout << GREEN << " called" << endl << RESET;
+  LOG("Copy", " constructor")
   _value = f._value;
 }
 
 Fixed &Fixed::operator=(const Fixed &f) {
-  cout << BOLDCYAN << "Copy" << BOLDMAGENTA << " assignment operator" << RESET;
-  cout << GREEN << " called" << endl << RESET;
+  LOG("Copy", " assignment operator")
   if (this == &f)
     return *this;
   _value = f._value;
@@ -40,17 +38,20 @@ Fixed &Fixed::operator=(const Fixed &f) {
 }
 
 int Fixed::getRawBits(void) const {
-  cout << BOLDYELLOW << "getRawBits" << BOLDCYAN << " member function" << RESET;
-  cout << GREEN << " called" << endl << RESET;
+  LOG("getRawBits", " member function")
   return _value;
 }
 
 void Fixed::setRawBits(int const raw) {
-  cout << BOLDYELLOW << "setRawBits" << BOLDCYAN << " member function" << RESET;
-  cout << GREEN << " called" << endl << RESET;
+  LOG("setRawBits", " member function")
   _value = raw;
 }
 
-float Fixed::toFloat(void) const { return (float)_value * (1 << _fBits); }
+float Fixed::toFloat(void) const { return (float)_value / (1 << _fBits); }
 
-int Fixed::toInt(void) const { return _value << _fBits; }
+int Fixed::toInt(void) const { return _value >> _fBits; }
+
+ostream &operator<<(ostream &out, const Fixed &f) {
+  out << f.toFloat();
+  return out;
+}
