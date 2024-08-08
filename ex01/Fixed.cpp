@@ -1,8 +1,8 @@
 #include "Fixed.hpp"
 #include "Colors.hpp"
 
-#define LOG(s1, s2)                             \
-  cout << BOLDCYAN << s1 << BOLDMAGENTA << s2   \
+#define LOG(s1, s2)                            \
+  cout << BOLDCYAN << s1 << BOLDMAGENTA << s2  \
        << GREEN << " called" << endl << RESET;
 
 Fixed::Fixed(void) {
@@ -20,9 +20,7 @@ Fixed::Fixed(const float value) {
   _value = roundf(value * (1 << _fBits));
 }
 
-Fixed::~Fixed(void) {
-  LOG("De", "constructor")
-}
+Fixed::~Fixed(void){LOG("De", "constructor")}
 
 Fixed::Fixed(const Fixed &f) {
   LOG("Copy", " constructor")
@@ -51,7 +49,4 @@ float Fixed::toFloat(void) const { return (float)_value / (1 << _fBits); }
 
 int Fixed::toInt(void) const { return _value >> _fBits; }
 
-ostream &operator<<(ostream &out, const Fixed &f) {
-  out << f.toFloat();
-  return out;
-}
+ostream &operator<<(ostream &out, const Fixed &f) { return out << f.toFloat(); }
