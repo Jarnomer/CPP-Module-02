@@ -21,7 +21,7 @@ Fixed::Fixed(const float value) {
 }
 
 Fixed::~Fixed(void) {
-  LOG("Deconstructor", " constructor")
+  LOG("De", "constructor")
 }
 
 Fixed::Fixed(const Fixed &f) {
