@@ -2,19 +2,35 @@
 
 int main(void) {
   Fixed a;
-  Fixed const b(10);
-  Fixed const c(42.42f);
-  Fixed const d(b);
+  Fixed const b(Fixed(5.05f) * Fixed(2));
 
-  a = Fixed(1234.4321f);
+  cout << a << endl;
+  cout << ++a << endl;
+  cout << a << endl;
+  cout << a++ << endl;
+  cout << a << endl;
 
-  cout << "a is " << a << endl;
-  cout << "b is " << b << endl;
-  cout << "c is " << c << endl;
-  cout << "d is " << d << endl;
-  cout << "a is " << a.toInt() << " as integer" << endl;
-  cout << "b is " << b.toInt() << " as integer" << endl;
-  cout << "c is " << c.toInt() << " as integer" << endl;
-  cout << "d is " << d.toInt() << " as integer" << endl;
+  cout << b << endl;
+
+  cout << (a == b) << endl;
+  cout << (a != b) << endl;
+  cout << (a <= b) << endl;
+  cout << (a > b) << endl;
+  cout << (a <= b) << endl;
+  cout << (a > b) << endl;
+
+  cout << (b - 3.0f) << endl;
+  cout << (b + 3.0f) << endl;
+  cout << (b / 2) << endl;
+  cout << (b * 2) << endl;
+
+  a = 0;
+  cout << a << endl;
+  cout << --a << endl;
+  cout << a << endl;
+  cout << a-- << endl;
+  cout << a << endl;
+
+  /* cout << Fixed::max(a, b) << endl; */
   return 0;
 }

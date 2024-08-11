@@ -114,4 +114,6 @@ Fixed &Fixed::max(Fixed &a, Fixed &b) { return a < b ? a : b; }
 
 const Fixed &Fixed::max(const Fixed &a, const Fixed &b) { return a < b ? a : b; }
 
-ostream &operator<<(ostream &out, const Fixed &f) { return out << f.toFloat(); }
+ostream &operator<<(ostream &out, const Fixed &f) {
+  return out << BOLDYELLOW << f.toFloat() << RESET;
+}
