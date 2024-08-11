@@ -27,6 +27,10 @@ public:
   Fixed operator-(const Fixed &f) const;
   Fixed operator*(const Fixed &f) const;
   Fixed operator/(const Fixed &f) const;
+  Fixed &operator++(void);
+  Fixed operator++(int);
+  Fixed &operator--(void);
+  Fixed operator--(int);
   Fixed &min(Fixed &a, Fixed &b);
   const Fixed &min(const Fixed &a, const Fixed &b);
   Fixed &max(Fixed &a, Fixed &b);
