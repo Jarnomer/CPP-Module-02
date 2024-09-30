@@ -1,8 +1,9 @@
 #include "Fixed.hpp"
 #include "Colors.hpp"
 
-#define LOG(s1, s2) cout << BOLDCYAN << s1 << BOLDMAGENTA << s2 \
-                         << GREEN << " called" << endl << RESET;
+#define LOG(s1, s2)                                                            \
+  cout << BOLDCYAN << s1 << BOLDMAGENTA << s2 << GREEN << " called" << endl    \
+       << RESET;
 
 Fixed::Fixed(void) {
   LOG("Default", " constructor")
@@ -26,7 +27,7 @@ Fixed::Fixed(const Fixed &f) {
 
 Fixed::~Fixed(void){LOG("De", "constructor")}
 
-Fixed &Fixed::operator=(const Fixed & f) {
+Fixed &Fixed::operator=(const Fixed &f) {
   LOG("Copy", " assignment operator")
   if (this == &f)
     return *this;
@@ -108,11 +109,15 @@ Fixed Fixed::operator--(int) {
 
 Fixed &Fixed::min(Fixed &a, Fixed &b) { return a < b ? a : b; }
 
-const Fixed &Fixed::min(const Fixed &a, const Fixed &b) { return a < b ? a : b; }
+const Fixed &Fixed::min(const Fixed &a, const Fixed &b) {
+  return a < b ? a : b;
+}
 
-Fixed &Fixed::max(Fixed &a, Fixed &b) { return a < b ? a : b; }
+Fixed &Fixed::max(Fixed &a, Fixed &b) { return a > b ? a : b; }
 
-const Fixed &Fixed::max(const Fixed &a, const Fixed &b) { return a < b ? a : b; }
+const Fixed &Fixed::max(const Fixed &a, const Fixed &b) {
+  return a > b ? a : b;
+}
 
 ostream &operator<<(ostream &out, const Fixed &f) {
   return out << BOLDYELLOW << f.toFloat() << RESET;
