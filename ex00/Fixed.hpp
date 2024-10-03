@@ -1,10 +1,6 @@
-#ifndef FIXED_HPP
-#define FIXED_HPP
+#pragma once
 
 #include <iostream>
-
-using std::cout;
-using std::endl;
 
 class Fixed {
 public:
@@ -19,5 +15,3 @@ private:
   int _value;
   static const int _fBits = 8;
 };
-
-#endif

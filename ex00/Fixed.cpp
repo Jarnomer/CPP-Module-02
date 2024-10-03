@@ -1,25 +1,16 @@
-#include "Colors.hpp"
 #include "Fixed.hpp"
 
-Fixed::Fixed(void) : _value(0) {
-  cout << BOLDCYAN << "Default" << BOLDMAGENTA << " constructor" << RESET;
-  cout << GREEN << " called" << endl << RESET;
-}
+Fixed::Fixed(void) : _value(0) { std::cout << "Default constructor called\n"; }
 
-Fixed::~Fixed(void) {
-  cout << BOLDRED << "De" << BOLDMAGENTA << "constructor" << RESET;
-  cout << GREEN << " called" << endl << RESET;
-}
+Fixed::~Fixed(void) { std::cout << "Deconstructor called\n"; }
 
 Fixed::Fixed(const Fixed &f) {
-  cout << BOLDCYAN << "Copy" << BOLDMAGENTA << " constructor" << RESET;
-  cout << GREEN << " called" << endl << RESET;
+  std::cout << "Copy constructor called\n";
   _value = f._value;
 }
 
 Fixed &Fixed::operator=(const Fixed &f) {
-  cout << BOLDCYAN << "Copy" << BOLDMAGENTA << " assignment operator" << RESET;
-  cout << GREEN << " called" << endl << RESET;
+  std::cout << "Copy assignment operator called\n";
   if (this == &f)
     return *this;
   _value = f._value;
@@ -27,13 +18,11 @@ Fixed &Fixed::operator=(const Fixed &f) {
 }
 
 int Fixed::getRawBits(void) const {
-  cout << BOLDYELLOW << "getRawBits" << BOLDCYAN << " member function" << RESET;
-  cout << GREEN << " called" << endl << RESET;
+  std::cout << "getRawBits member function called\n";
   return _value;
 }
 
 void Fixed::setRawBits(int const raw) {
-  cout << BOLDYELLOW << "setRawBits" << BOLDCYAN << " member function" << RESET;
-  cout << GREEN << " called" << endl << RESET;
+  std::cout << "setRawBits member function\n";
   _value = raw;
 }
