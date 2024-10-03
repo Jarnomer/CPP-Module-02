@@ -1,13 +1,7 @@
-#ifndef FIXED_HPP
-#define FIXED_HPP
+#pragma once
 
 #include <cmath>
 #include <iostream>
-
-using std::cout;
-using std::endl;
-using std::ostream;
-using std::roundf;
 
 class Fixed {
 public:
@@ -47,14 +41,14 @@ public:
 public:
   int getRawBits(void) const;
   void setRawBits(int const raw);
+
+public:
   float toFloat(void) const;
   int toInt(void) const;
 
 private:
-  int _value;
-  static const int _fBits = 8;
+  int value;
+  static const int fBits = 8;
 };
 
-ostream &operator<<(ostream &out, const Fixed &f);
-
-#endif
+std::ostream &operator<<(std::ostream &out, const Fixed &f);

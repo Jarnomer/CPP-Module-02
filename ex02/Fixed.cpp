@@ -1,109 +1,104 @@
 #include "Fixed.hpp"
-#include "Colors.hpp"
-
-#define LOG(s1, s2)                                                            \
-  cout << BOLDCYAN << s1 << BOLDMAGENTA << s2 << GREEN << " called" << endl    \
-       << RESET;
 
 Fixed::Fixed(void) {
-  LOG("Default", " constructor")
-  _value = 0;
+  std::cout << "Default constructor called\n";
+  value = 0;
 }
 
 Fixed::Fixed(const int value) {
-  LOG("Int", " constructor")
-  _value = value << _fBits;
+  std::cout << "Int constructor called\n";
+  this->value = value << fBits;
 }
 
 Fixed::Fixed(const float value) {
-  LOG("Float", " constructor")
-  _value = roundf(value * (1 << _fBits));
+  std::cout << "Float constructor called\n";
+  this->value = roundf(value * (1 << fBits));
 }
 
 Fixed::Fixed(const Fixed &f) {
-  LOG("Copy", " constructor")
-  _value = f._value;
+  std::cout << "Copy constructor called\n";
+  value = f.value;
 }
 
-Fixed::~Fixed(void){LOG("De", "constructor")}
+Fixed::~Fixed(void) { std::cout << "Deconstructor called\n"; }
 
 Fixed &Fixed::operator=(const Fixed &f) {
-  LOG("Copy", " assignment operator")
+  std::cout << "Copy assignment operator called\n";
   if (this == &f)
     return *this;
-  _value = f._value;
+  value = f.value;
   return *this;
 }
 
 int Fixed::getRawBits(void) const {
-  LOG("getRawBits", " member function")
-  return _value;
+  std::cout << "getRawBits member function called\n";
+  return value;
 }
 
 void Fixed::setRawBits(int const raw) {
-  LOG("setRawBits", " member function")
-  _value = raw;
+  std::cout << "setRawBits member function called\n";
+  value = raw;
 }
 
-float Fixed::toFloat(void) const { return (float)_value / (1 << _fBits); }
+float Fixed::toFloat(void) const { return (float)value / (1 << fBits); }
 
-int Fixed::toInt(void) const { return _value >> _fBits; }
+int Fixed::toInt(void) const { return value >> fBits; }
 
-bool Fixed::operator==(const Fixed &f) const { return _value == f._value; }
+bool Fixed::operator==(const Fixed &f) const { return value == f.value; }
 
-bool Fixed::operator!=(const Fixed &f) const { return _value != f._value; }
+bool Fixed::operator!=(const Fixed &f) const { return value != f.value; }
 
-bool Fixed::operator<=(const Fixed &f) const { return _value <= f._value; }
+bool Fixed::operator<=(const Fixed &f) const { return value <= f.value; }
 
-bool Fixed::operator>=(const Fixed &f) const { return _value >= f._value; }
+bool Fixed::operator>=(const Fixed &f) const { return value >= f.value; }
 
-bool Fixed::operator<(const Fixed &f) const { return _value < f._value; }
+bool Fixed::operator<(const Fixed &f) const { return value < f.value; }
 
-bool Fixed::operator>(const Fixed &f) const { return _value > f._value; }
+bool Fixed::operator>(const Fixed &f) const { return value > f.value; }
 
 Fixed Fixed::operator+(const Fixed &f) const {
   Fixed temp;
-  temp.setRawBits(_value + f._value);
+  temp.setRawBits(value + f.value);
   return temp;
 }
 
 Fixed Fixed::operator-(const Fixed &f) const {
   Fixed temp;
-  temp.setRawBits(_value - f._value);
+  temp.setRawBits(value - f.value);
   return temp;
 }
 
 Fixed Fixed::operator*(const Fixed &f) const {
   Fixed temp;
-  temp.setRawBits((_value * f._value) >> _fBits);
+  temp.setRawBits((value * f.value) >> fBits);
   return temp;
 }
 
 Fixed Fixed::operator/(const Fixed &f) const {
   Fixed temp;
-  temp.setRawBits((_value << _fBits) / f._value);
+  temp.setRawBits((value << fBits) / f.value);
   return temp;
 }
 
 Fixed &Fixed::operator++(void) {
-  this->_value++;
+  this->value++;
   return *this;
 }
 
 Fixed Fixed::operator++(int) {
   Fixed temp(*this);
-  temp._value++;
+  this->value++;
   return temp;
 }
 
 Fixed &Fixed::operator--(void) {
-  this->_value--;
+  this->value--;
   return *this;
 }
 
 Fixed Fixed::operator--(int) {
   Fixed temp(*this);
-  temp._value--;
+  this->value--;
   return temp;
 }
 
@@ -119,6 +114,6 @@ const Fixed &Fixed::max(const Fixed &a, const Fixed &b) {
   return a > b ? a : b;
 }
 
-ostream &operator<<(ostream &out, const Fixed &f) {
-  return out << BOLDYELLOW << f.toFloat() << RESET;
+std::ostream &operator<<(std::ostream &out, const Fixed &f) {
+  return out << f.toFloat();
 }

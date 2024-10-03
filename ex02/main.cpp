@@ -1,46 +1,44 @@
-#include "Colors.hpp"
 #include "Fixed.hpp"
 
 int main(void) {
   Fixed a;
   Fixed const b(Fixed(5.05f) * Fixed(2));
 
-  cout << BOLDRED "\n\nIncrement operators\n\n" << RESET;
-  cout << "a: " << a << endl;
-  cout << "a: " << ++a << endl;
-  cout << "a: " << a << endl;
-  cout << "a: " << a++ << endl;
-  cout << "a: " << a << endl;
+  std::cout << "\nIncrement operators\n\n";
+  std::cout << "a: " << a << "\n";
+  std::cout << "a: " << ++a << "\n";
+  std::cout << "a: " << a << "\n";
+  std::cout << "a: " << a++ << "\n";
+  std::cout << "a: " << a << "\n";
 
-  cout << "b: " << b << endl;
+  std::cout << "b: " << b << "\n";
 
-  cout << BOLDRED "\n\nComparison operators\n\n" << RESET;
-  cout << "Is a: " << a << " == b: " << b << " -> " << (a == b) << endl;
-  cout << "Is a: " << a << " != b: " << b << " -> " << (a != b) << endl;
-  cout << "Is a: " << a << " <= b: " << b << " -> " << (a <= b) << endl;
-  cout << "Is a: " << a << " < b: " << b << " -> " << (a < b) << endl;
-  cout << "Is a: " << a << " >= b: " << b << " -> " << (a >= b) << endl;
-  cout << "Is a: " << a << " > b: " << b << " -> " << (a > b) << endl;
+  std::cout << "\nComparison operators\n\n";
+  std::cout << "Is a: " << a << " == b: " << b << " -> " << (a == b) << "\n";
+  std::cout << "Is a: " << a << " != b: " << b << " -> " << (a != b) << "\n";
+  std::cout << "Is a: " << a << " <= b: " << b << " -> " << (a <= b) << "\n";
+  std::cout << "Is a: " << a << " < b: " << b << " -> " << (a < b) << "\n";
+  std::cout << "Is a: " << a << " >= b: " << b << " -> " << (a >= b) << "\n";
+  std::cout << "Is a: " << a << " > b: " << b << " -> " << (a > b) << "\n";
 
-  cout << BOLDRED "\n\nArithmetic operators\n\n" << RESET;
-  cout << "What is b: " << b << " - 0.3f ?\n" << (b - 3.0f) << "\n\n";
-  cout << "\nWhat is b: " << b << " + 0.3f ?\n" << (b + 3.0f) << "\n\n";
-  cout << "\nWhat is b: " << b << " / 2 ?\n" << (b / 2) << "\n\n";
-  cout << "\nWhat is b: " << b << " * 2 ?\n" << (b * 2) << "\n\n";
+  std::cout << "\nArithmetic operators\n\n";
+  std::cout << "What is b: " << b << " - 3.0f ?\n" << (b - 3.0f) << "\n\n";
+  std::cout << "\nWhat is b: " << b << " + 0.3f ?\n" << (b + 0.3f) << "\n\n";
+  std::cout << "\nWhat is b: " << b << " / 2 ?\n" << (b / 2) << "\n\n";
+  std::cout << "\nWhat is b: " << b << " * 2 ?\n" << (b * 2) << "\n\n";
 
-  cout << BOLDRED "\n\nDecrement operators\n\n" << RESET;
   a = 0.0f;
-  cout << "\n";
-  cout << "a: " << a << endl;
-  cout << "a: " << --a << endl;
-  cout << "a: " << a << endl;
-  cout << "a: " << a-- << endl;
-  cout << "a: " << a << endl;
+  std::cout << "\nDecrement operators\n\n";
+  std::cout << "a: " << a << "\n";
+  std::cout << "a: " << --a << "\n";
+  std::cout << "a: " << a << "\n";
+  std::cout << "a: " << a-- << "\n";
+  std::cout << "a: " << a << "\n";
 
-  cout << BOLDRED "\n\nMin/Max operators\n\n" << RESET;
-  cout << "Max of a: " << a << " b: " << b << " -> " << Fixed::max(a, b)
-       << "\n";
-  cout << "Min of a: " << a << " b: " << b << " -> " << Fixed::min(a, b)
-       << "\n";
+  std::cout << "\nMin/Max operators\n\n";
+  std::cout << "Max of a: " << a << " b: " << b << " -> " << Fixed::max(a, b)
+            << "\n";
+  std::cout << "Min of a: " << a << " b: " << b << " -> " << Fixed::min(a, b)
+            << "\n";
   return 0;
 }
