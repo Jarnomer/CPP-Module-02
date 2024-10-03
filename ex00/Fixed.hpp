@@ -8,10 +8,12 @@ public:
   Fixed(const Fixed &f);
   Fixed &operator=(const Fixed &f);
   ~Fixed(void);
+
+public:
   int getRawBits(void) const;
   void setRawBits(int const raw);
 
 private:
-  int _value;
-  static const int _fBits = 8;
+  int value;
+  static const int fBits = 8;
 };
